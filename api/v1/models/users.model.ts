@@ -1,6 +1,6 @@
 
 import mongoose from 'mongoose';
-// import generate  from'../../../helpers/generateRDString'
+// import generate  from'../../../helpers/generateRDString' 
 
 const userSchema = new mongoose.Schema({
     fullName: String,

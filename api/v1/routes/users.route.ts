@@ -1,11 +1,12 @@
 
-import express, { Router } from "express";
+import  { Router } from "express";
 import * as userController from "../controllers/users.controller";
+import * as authMiddleware from "../middlewares/auth.middleware"
 const router : Router =Router()
 router.post("/register" , userController.register)
 router.post("/login" , userController.login)
-router.get("/detail/:id" , 
-    // authMiddleware.requireAuth,
+router.get("/detail/" , 
+    authMiddleware.requireAuth,
      userController.detail
 )
 
