@@ -1,20 +1,8 @@
-const express = require("express")
-const router = express.Router()
-const userController = require("../controller/users.controller")
-const authMiddleware = require("../middlewares/auth.middleware")
+
+import express, { Router } from "express";
+import * as userController from "../controllers/users.controller";
+const router : Router =Router()
 router.post("/register" , userController.register)
-router.post("/login" , userController.login)
-router.post("/password/forgot" , userController.forgotPassword)
-router.post("/password/otp" , userController.otpPassword)
-router.post("/password/reset" , userController.resetPassword)
-router.get("/detail/" , 
-    authMiddleware.requireAuth,
-     userController.detail
-)
-router.get("/list/" , 
-    authMiddleware.requireAuth,
-     userController.list
-)
 
 
-module.exports = router
+export const userRouter : Router = router
