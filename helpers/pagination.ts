@@ -11,7 +11,7 @@ const paginationHelpers = (
   objectPagination: PaginationObject,
   query: Record<string, any>,
   countRecords: number
-): PaginationObject {
+): PaginationObject => {
   const pageValue: unknown = query.page;
   if (typeof pageValue === 'string' && pageValue.length > 0) {
     objectPagination.currentPage = parseInt(pageValue, 10);

@@ -1,0 +1,18 @@
+interface objectSearch {
+    keyword : string,
+    regex?: RegExp
+}
+
+const searchHelpers = (query : Record<string , any> ) => {
+    let objectSearch : objectSearch = {
+        keyword : ""
+    };
+    if(query.keyword){
+        objectSearch.keyword = query.keyword
+        const regex = new RegExp(objectSearch.keyword, "i"); // Tìm gần đúng 
+        objectSearch.regex = regex;
+    }
+    return objectSearch;
+}
+
+export default searchHelpers;
