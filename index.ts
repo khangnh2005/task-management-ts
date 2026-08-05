@@ -8,8 +8,11 @@ database.connect()
 const app: Express = express();
 const port : number | string = process.env.PORT || 3000;
 
-mainV1Routes(app)
+app.use(express.json())
+app.use(express.urlencoded({extended : true}))
 
+
+mainV1Routes(app)
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });

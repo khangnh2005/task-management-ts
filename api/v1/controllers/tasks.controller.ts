@@ -61,3 +61,31 @@ export const detail = async (req: Request, res: Response) => {
   res.json(task)
 }
 
+export const changeStatus = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const status : string = req.body.status
+    const task = await Task.updateOne(
+      { _id : id ,  deleted : false}, {
+        status : status
+    })
+    if(!task){
+        res.json({
+        code : 400,
+        message: "Cap nhat trang thai khong thanh cong"
+      })
+    }
+    res.json({
+      code : 200,
+      message: "Cap nhat trang thai thanh cong"
+    })
+  } catch (error) {
+    console.log(error)
+    res.json({
+      code : 400,
+      message: "Loi"
+    })
+  }
+  
+}
+
