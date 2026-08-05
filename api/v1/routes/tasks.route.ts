@@ -7,5 +7,6 @@ router.patch("/change-status/:id", Controller.changeStatus)
 router.patch("/change-multi", Controller.changeMulti)
 router.post('/create/',Controller.create)
 router.patch('/edit/:id',Controller.edit)
+router.delete('/delete/:id',Controller.deleteTask)
 
 export const taskRouter : Router = router
