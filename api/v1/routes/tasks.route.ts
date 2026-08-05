@@ -6,5 +6,6 @@ router.get("/detail/:id", Controller.detail)
 router.patch("/change-status/:id", Controller.changeStatus)
 router.patch("/change-multi", Controller.changeMulti)
 router.post('/create/',Controller.create)
+router.patch('/edit/:id',Controller.edit)
 
 export const taskRouter : Router = router
