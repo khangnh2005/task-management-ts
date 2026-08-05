@@ -45,3 +45,57 @@ export const register = async (req : Request , res : Response)=>{
     }
 }
 
+export const login = async (req : Request , res : Response)=>{
+    try {
+        
+        const password = md5(req.body.password)
+        const existUser = await User.findOne({
+            email : req.body.email , 
+            password : password,
+            deleted : false  
+        })
+        if(!existUser){
+            
+            res.json({
+                code: 400,
+                message : "Email hoặc mật khẩu không đúng"
+            })
+            return ;
+        }else{
+            const token = existUser.token
+            res.cookie("token", token)
+            res.json({
+                code: 200,
+                message : "Đăng nhập thành công",
+                token : token
+            })
+        }
+    } catch (error) {
+        console.log(error)
+        res.json({
+            code: 400,
+            message : "Lỗi",
+            error : error
+        })
+    }
+}
+export const detail = async (req : Request , res : Response)=>{
+    try {
+        const id = req.params.id
+        const user = await User.find({
+            _id : id,
+            deleted :  false
+        }).select("-password -token")
+        res.json({
+            code: 200,
+            message : "Thanh cong", 
+            info : user
+        })
+    } catch (error) {
+        console.log(error)
+        res.json({
+            code: 400,
+            message : "Lỗi"
+        })
+    }
+}
