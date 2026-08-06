@@ -17,3 +17,6 @@ mainV1Routes(app)
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
+
+// Cach deploy project ts len vercel 
+// https://dev.to/tirthpatel/deploy-node-ts-express-typescript-on-vercel-284h
